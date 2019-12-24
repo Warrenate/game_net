@@ -26,7 +26,6 @@ void StudentMsg::OnProcess(char* pb, int length)
 	else
 	{
 		cout << "age: " << student.age() << endl;
-		cout << "name: " << student.name() << endl;
 		cout << "num:" << student.num() << endl;
 	}
 

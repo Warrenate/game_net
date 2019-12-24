@@ -445,29 +445,15 @@ class Student : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
 
   // accessors -------------------------------------------------------
 
-  // string name = 1;
-  void clear_name();
-  static const int kNameFieldNumber = 1;
-  const ::std::string& name() const;
-  void set_name(const ::std::string& value);
-  #if LANG_CXX11
-  void set_name(::std::string&& value);
-  #endif
-  void set_name(const char* value);
-  void set_name(const char* value, size_t size);
-  ::std::string* mutable_name();
-  ::std::string* release_name();
-  void set_allocated_name(::std::string* name);
-
-  // int32 age = 2;
+  // int32 age = 1;
   void clear_age();
-  static const int kAgeFieldNumber = 2;
+  static const int kAgeFieldNumber = 1;
   ::google::protobuf::int32 age() const;
   void set_age(::google::protobuf::int32 value);
 
-  // int32 num = 3;
+  // int32 num = 2;
   void clear_num();
-  static const int kNumFieldNumber = 3;
+  static const int kNumFieldNumber = 2;
   ::google::protobuf::int32 num() const;
   void set_num(::google::protobuf::int32 value);
 
@@ -475,7 +461,6 @@ class Student : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArenaLite _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::int32 age_;
   ::google::protobuf::int32 num_;
   mutable int _cached_size_;
@@ -748,60 +733,7 @@ People::phones() const {
 
 // Student
 
-// string name = 1;
-inline void Student::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& Student::name() const {
-  // @@protoc_insertion_point(field_get:XNet.Student.name)
-  return name_.GetNoArena();
-}
-inline void Student::set_name(const ::std::string& value) {
-  
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:XNet.Student.name)
-}
-#if LANG_CXX11
-inline void Student::set_name(::std::string&& value) {
-  
-  name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:XNet.Student.name)
-}
-#endif
-inline void Student::set_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:XNet.Student.name)
-}
-inline void Student::set_name(const char* value, size_t size) {
-  
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:XNet.Student.name)
-}
-inline ::std::string* Student::mutable_name() {
-  
-  // @@protoc_insertion_point(field_mutable:XNet.Student.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* Student::release_name() {
-  // @@protoc_insertion_point(field_release:XNet.Student.name)
-  
-  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void Student::set_allocated_name(::std::string* name) {
-  if (name != NULL) {
-    
-  } else {
-    
-  }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:XNet.Student.name)
-}
-
-// int32 age = 2;
+// int32 age = 1;
 inline void Student::clear_age() {
   age_ = 0;
 }
@@ -815,7 +747,7 @@ inline void Student::set_age(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:XNet.Student.age)
 }
 
-// int32 num = 3;
+// int32 num = 2;
 inline void Student::clear_num() {
   num_ = 0;
 }

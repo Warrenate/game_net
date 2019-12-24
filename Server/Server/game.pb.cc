@@ -741,7 +741,6 @@ void People::InternalSwap(People* other) {
 void Student::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Student::kNameFieldNumber;
 const int Student::kAgeFieldNumber;
 const int Student::kNumFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -759,10 +758,6 @@ Student::Student(const Student& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
-  }
   ::memcpy(&age_, &from.age_,
     static_cast<size_t>(reinterpret_cast<char*>(&num_) -
     reinterpret_cast<char*>(&age_)) + sizeof(num_));
@@ -770,7 +765,6 @@ Student::Student(const Student& from)
 }
 
 void Student::SharedCtor() {
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&age_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&num_) -
       reinterpret_cast<char*>(&age_)) + sizeof(num_));
@@ -783,7 +777,6 @@ Student::~Student() {
 }
 
 void Student::SharedDtor() {
-  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void Student::SetCachedSize(int size) const {
@@ -810,7 +803,6 @@ void Student::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&age_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&num_) -
       reinterpret_cast<char*>(&age_)) + sizeof(num_));
@@ -833,26 +825,10 @@ bool Student::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string name = 1;
+      // int32 age = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "XNet.Student.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 age = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -863,10 +839,10 @@ bool Student::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 num = 3;
-      case 3: {
+      // int32 num = 2;
+      case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -903,24 +879,14 @@ void Student::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string name = 1;
-  if (this->name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "XNet.Student.name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
-  }
-
-  // int32 age = 2;
+  // int32 age = 1;
   if (this->age() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->age(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->age(), output);
   }
 
-  // int32 num = 3;
+  // int32 num = 2;
   if (this->num() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->num(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->num(), output);
   }
 
   output->WriteRaw((::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()).data(),
@@ -934,21 +900,14 @@ size_t Student::ByteSizeLong() const {
 
   total_size += (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()).size();
 
-  // string name = 1;
-  if (this->name().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->name());
-  }
-
-  // int32 age = 2;
+  // int32 age = 1;
   if (this->age() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->age());
   }
 
-  // int32 num = 3;
+  // int32 num = 2;
   if (this->num() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -974,10 +933,6 @@ void Student::MergeFrom(const Student& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.name().size() > 0) {
-
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
-  }
   if (from.age() != 0) {
     set_age(from.age());
   }
@@ -1003,7 +958,6 @@ void Student::Swap(Student* other) {
 }
 void Student::InternalSwap(Student* other) {
   using std::swap;
-  name_.Swap(&other->name_);
   swap(age_, other->age_);
   swap(num_, other->num_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
